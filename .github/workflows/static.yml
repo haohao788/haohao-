@@ -28,8 +28,11 @@ jobs:
         run: |
           mkdir -p _site
           cat .deploy/part-1.b64 .deploy/part-2.b64 .deploy/part-3.b64 | base64 --decode | tar -xJ --strip-components=1 -C _site
+          cat .deploy/chain-assets.tar.xz.b64 | base64 --decode | tar -xJ -C .
           cp .deploy/google-places.js _site/google-places.js
           cp .deploy/google-places.css _site/google-places.css
+          cp .deploy/chain-directory.js _site/chain-directory.js
+          cp .deploy/chain-directory.css _site/chain-directory.css
           cp .deploy/terms.html _site/terms.html
           cp .deploy/privacy.html _site/privacy.html
           if [ -f google-places-config.js ]; then cp google-places-config.js _site/google-places-config.js; fi
